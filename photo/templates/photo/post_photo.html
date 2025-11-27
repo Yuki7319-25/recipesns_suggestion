@@ -1,0 +1,142 @@
+{% extends "photo/base.html" %}
+{% load static %}
+
+{% block title %}Post{% endblock %}
+
+{% block contents %}
+<br>
+
+<div class="container" style="display: flex; gap: 20px; flex-wrap: nowrap;">
+
+  <!-- 左カラム：投稿フォーム -->
+  <div style="flex: 2; min-width: 300px;">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <table>
+        <tr>
+          <th>カテゴリ</th>
+          <td>{{ form.category }}</td>
+        </tr>
+        <tr>
+          <th>タイトル</th>
+          <td>{{ form.title }}</td>
+        </tr>
+        <tr>
+          <th>コメント</th>
+          <td>{{ form.comment }}</td>
+        </tr>
+        <tr>
+          <th>レシピ</th>
+          <td>{{ form.recipe }}</td>
+        </tr>
+
+        <!-- ★ ここを横並びのプレビューに変更 ★ -->
+        <tr>
+          <th>画像1・画像2</th>
+          <td>
+            <div class="preview-box">
+              <div>
+                {{ form.image1 }}<br>
+                <img id="preview1" src="#" class="preview-img" style="display:none;">
+              </div>
+
+              <div>
+                {{ form.image2 }}<br>
+                <img id="preview2" src="#" class="preview-img" style="display:none;">
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <button type="submit" class="btn btn-primary mt-2">投稿する</button>
+    </form>
+  </div>
+
+  <!-- 右カラム：吹き出し＋キャラ画像 -->
+  <div style="flex: 0 0 350px; min-width: 200px;">
+    <div class="chat-item">
+      <div class="bubble">
+        写真をたくさん投稿して彩りましょう
+      </div>
+      <img src="{% static 'images/image2.png' %}" class="chat-avatar">
+    </div>
+  </div>
+
+</div>
+
+<!-- プレビュー用JavaScript -->
+<script>
+function previewImage(input, previewId) {
+  const [file] = input.files;
+  if (file) {
+    const preview = document.getElementById(previewId);
+    preview.src = URL.createObjectURL(file);
+    preview.style.display = 'block';
+  }
+}
+
+document.getElementById('id_image1').addEventListener('change', function() {
+  previewImage(this, 'preview1');
+});
+document.getElementById('id_image2').addEventListener('change', function() {
+  previewImage(this, 'preview2');
+});
+</script>
+
+<style>
+
+/* 写真＋吹き出し全体 */
+.chat-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+/* 右側キャラ写真 */
+.chat-avatar {
+  width: 140px;
+  height: 280px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* 吹き出し */
+.bubble {
+  max-width: 350px;
+  padding: 10px 15px;
+  border-radius: 15px;
+  background-color: #DCF8C6;
+  position: relative;
+  color: #000;
+}
+.bubble::after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  right: -10px;
+  border-width: 10px 0 10px 10px;
+  border-style: solid;
+  border-color: transparent transparent transparent #DCF8C6;
+}
+
+/* ★ 画像プレビュー2枚を横並びにする ★ */
+.preview-box {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+/* プレビュー画像の大きさ調整 */
+.preview-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+</style>
+
+{% endblock %}

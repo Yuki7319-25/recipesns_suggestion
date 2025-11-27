@@ -1,0 +1,269 @@
+/* ============================
+   サイト全体の背景
+============================= */
+/* style.css 内 */
+body {
+  background-image: url("/static/img/wood.jpg");
+  background-size: cover;
+}
+
+/* ============================
+   ヘッダー
+============================= */
+.header {
+    background: rgba(224, 117, 35, 0.511);
+    backdrop-filter: blur(5px);
+    padding: 15px 20px;
+    border-bottom: 1px solid #8b5e3c;
+}
+
+.header__title {
+  color: #fdf6e3 !important;
+}
+
+.header__subtitle {
+  color: #fce2ca !important;
+}
+
+/* ============================
+   フッターリンク
+============================= */
+footer a {
+  color: #fdf6e3 !important;
+  text-decoration: none;
+}
+
+/* ============================
+   ボタン
+============================= */
+.btn-primary {
+  background-color: #a26c44;
+  border-color: #a26c44;
+  color: #fdf6e3;
+}
+
+.btn-primary:hover {
+  background-color: #d49b70;
+  border-color: #a26c44;
+}
+
+.btn-secondary {
+  background-color: #a26c44;
+  border-color: #a26c44;
+  color: #fdf6e3;
+}
+
+.btn-secondary:hover {
+  background-color: #d49b70;
+  border-color: #8b5e3c;
+}
+
+/* ============================
+   ログインフォームカード
+============================= */
+.form-signin {
+  max-width: 380px;
+  margin: 80px auto;
+  padding: 40px 30px;
+  background: #f5e4d3;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(122, 48, 2, 0.5);
+  position: relative;
+  z-index: 1;
+}
+
+.form-signin h1 {
+  font-family: 'Courier New', monospace;
+  color: #422311;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-signin input.form-control:focus {
+  border-color: #8b5e3c;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.form-signin input[type="submit"]:hover {
+  background-color: #a26c44 !important;
+}
+
+/* ============================
+   ナビゲーションメニュー
+============================= */
+.header__menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.header__menu-item a {
+    position: relative;
+    text-decoration: none;
+    color: #ffc49f;
+    padding: 5px 1px;
+    border-radius: 5px;
+    transition: color 0.5s, background-color 0.3s;
+}
+
+.header__menu-item a:hover {
+    color: #ffb259;
+    background-color: #8b5e3c;
+}
+
+.header__menu-item a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -3px;
+    left: 0;
+    background-color: #e6a44e;
+    transition: width 0.3s;
+}
+
+.header__menu-item a:hover::after {
+    width: 100%;
+}
+
+/* ============================
+   見出し・本文
+============================= */
+main p {
+  color: #fdf6e3;
+}
+
+main h1, main h2, main h3 {
+  color: #ffffff;
+}
+
+/* ============================
+   見出し・本文
+============================ */
+main p {
+  color: #fdf6e3;
+}
+
+main h1, main h2, main h3 {
+  color: #ffffff;
+}
+section p {
+  color: #ffe8c6;  /* ここの色を変更 */
+}
+
+section h1.fw-light {
+  color: #ffb259;  /* 見出しの色を変更 */
+}
+
+.btn-outline-secondary {
+    color: #5c3d1e !important;
+    border-color: #5c3d1e !important;
+}
+/* =======================
+   本日のおすすめページ用
+======================= */
+/* 結果ボックス横並び */
+.flex-result {
+    display: flex;
+    align-items: flex-start; /* 上揃え */
+    gap: 15px;               /* 画像と吹き出しの間隔 */
+}
+
+/* 画像サイズ */
+.result-image img.result-img {
+    width: 100px;     /* 横幅 */
+    height: auto;     /* 高さ自動調整 */
+    border-radius: 8px;
+}
+
+/* 吹き出し */
+.balloon {
+    position: relative;
+    background: #ffebc6;  /* 吹き出し色 */
+    border-radius: 10px;
+    padding: 10px 15px;
+    max-width: 300px;
+}
+
+/* 吹き出しの三角形 */
+.balloon::after {
+    content: "";
+    position: absolute;
+    top: 20px;           /* 三角形の縦位置 */
+    left: -15px;         /* 三角形の横位置（画像側に向ける） */
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent #ffebc6 transparent transparent;
+}
+
+/* 推奨ボタン */
+.recommend-btn {
+    background-color: #ff7f50;
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    font-size: 16px;
+    border-radius: 50px;
+    margin: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.recommend-btn:hover {
+    background-color: #ff5722;
+    transform: translateY(-2px);
+}
+
+/* エラーメッセージ */
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* 推奨カード */
+.recommend-card {
+    background: #6a2020;
+    padding: 30px;
+    max-width: 600px;
+    margin: 40px auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* 結果ボックス */
+.result-box {
+    margin-top: 30px;
+    padding: 20px;
+    background: #fceae8;
+    border-left: 6px solid #ff7f50;
+    border-radius: 8px;
+}
+.result-text.balloon {
+    background-color: #e35d5d; /* 背景を白に */
+    color: #8e2929;            /* 文字を黒に */
+    padding: 10px 15px;
+    border-radius: 15px;
+    position: relative;
+    font-weight: bold;
+    max-width: 250px;
+}
+
+/* 吹き出しの矢印 */
+.result-text.balloon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -15px; 
+    transform: translateY(-50%);
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent #e35d5d transparent transparent;
+}
+
+

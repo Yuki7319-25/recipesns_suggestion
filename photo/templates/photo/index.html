@@ -1,0 +1,9 @@
+{% extends "photo/base.html" %}
+
+{% load static %}
+{% block title %}photo Gallery{% endblock %}
+
+{% block contents %}
+    {% include 'photo/photos_title.html' %}
+    {% include 'photo/photos_list.html' %}
+{% endblock %}

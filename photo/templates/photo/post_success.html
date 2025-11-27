@@ -1,0 +1,20 @@
+{% extends "photo/base.html" %}
+
+{% block title %}Post Success{% endblock %}
+
+{% block contents %}
+<br><br>
+<div class="container">
+  <div class="row">
+    <div class="col offset-2">
+      <!-- 投稿完了メッセージ -->
+      <h4 style="color: #ffffff; text-align: center; margin-top: 30px;">投稿が完了しました!</h4>
+
+      <!-- ホームに戻るボタン -->
+      <div style="text-align: center; margin-top: 20px;">
+        <a href="{% url 'photo:index' %}" class="btn btn-primary">エントランスに戻る</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

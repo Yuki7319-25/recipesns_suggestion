@@ -1,0 +1,82 @@
+<div class="photo-grid">
+  {% for record in records %}
+    {% if record.pk %}
+      <div class="photo-card">
+        {% if record.image1 %}
+          <a href="{% url 'photo:detail' pk=record.pk %}">
+            <img src="{{ record.image1.url }}" class="photo-img" alt="{{ record.title }}">
+          </a>
+        {% endif %}
+
+        <p>{{ record.title }}</p>
+        <p class="text-muted">投稿者：{{ record.user.username }}</p>
+        <p class="text-danger">
+          <span id="like-count-{{ record.pk }}">{{ record.total_likes }}</span> ♥
+        </p>
+
+        {% if user.is_authenticated %}
+          <button id="fav-btn-{{ record.pk }}"
+                  onclick="toggleFavorite({{ record.pk }})"
+                  class="btn {% if record.is_favorited %}btn-danger{% else %}btn-outline-danger{% endif %}">
+            {% if record.is_favorited %}♥{% else %}♡{% endif %}
+          </button>
+        {% endif %}
+      </div>
+    {% endif %}
+  {% empty %}
+    <p>投稿がありません</p>
+  {% endfor %}
+</div>
+
+<style>
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.photo-card {
+  border: 1px solid #ffa861;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.photo-card img.photo-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  cursor: pointer;
+}
+</style>
+
+<script>
+function toggleFavorite(postId) {
+  const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+  fetch(`/favorite/${postId}/toggle/`, {
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': csrftoken,
+      'X-Requested-With': 'XMLHttpRequest',
+    },
+  })
+  .then(response => response.json())
+  .then(data => {
+    const btn = document.getElementById(`fav-btn-${postId}`);
+    const count = document.getElementById(`like-count-${postId}`);
+
+    count.textContent = data.total_likes;
+
+    if (data.is_favorited) {
+      btn.classList.remove('btn-outline-danger');
+      btn.classList.add('btn-danger');
+      btn.textContent = '♥';
+    } else {
+      btn.classList.remove('btn-danger');
+      btn.classList.add('btn-outline-danger');
+      btn.textContent = '♡';
+    }
+  })
+  .catch(error => console.error('Error:', error));
+}
+</script>

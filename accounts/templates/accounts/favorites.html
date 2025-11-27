@@ -1,0 +1,8 @@
+{% for record in records %}
+  <h2>{{ record.title }}</h2>
+  {% if record.is_favorited %}
+    <p>お気に入り済み</p>
+  {% else %}
+    <p>まだお気に入りしていません</p>
+  {% endif %}
+{% endfor %}

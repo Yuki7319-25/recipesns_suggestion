@@ -1,0 +1,77 @@
+/* ---------------------------
+   ログインフォーム全体
+---------------------------- */
+body {
+  background: #f5f7fa;
+}
+
+/* カード風のメインフォーム */
+.form-signin {
+  max-width: 38px;          /* フォーム幅 */
+  margin: 60px auto;
+  padding: 40px 30px;
+  background: #ffffff;
+  border-radius: 14px;        /* 角の丸み */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+/* タイトル（Please sign in） */
+.form-signin h1 {
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+/* エラーメッセージ */
+.form-signin p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* ---------------------------
+   入力欄デザイン
+---------------------------- */
+.form-signin .form-control {
+  width: 100%;
+  padding: 14px 16px;               /* 入力欄の高さ */
+  font-size: 16px;
+
+  margin-bottom: 15px;
+
+  border: 1px solid #cfd6e0;        /* 枠線色 */
+  border-radius: 8px;               /* 入力欄の角丸 */
+  background: #fafafa;
+
+  transition: all 0.25s ease;
+}
+
+/* 入力欄フォーカス時の色 */
+.form-signin .form-control:focus {
+  border-color: #0d6efd;            /* 青色（Bootstrapカラー）*/
+  background: #fff;
+  box-shadow: 0 0 7px rgba(0, 39, 99, 0.25);
+}
+
+/* ---------------------------
+   ボタン
+---------------------------- */
+.form-signin input[type="submit"] {
+  margin-top: 10px;
+  padding: 12px 0;
+  font-weight: bold;
+  font-size: 18px;
+
+  border-radius: 8px;
+}
+
+/* ---------------------------
+   パスワードを忘れた？リンク
+---------------------------- */
+.form-signin a {
+  font-size: 14px;
+  color: #fd0d0d;
+  text-decoration: none;
+}
+
+.form-signin a:hover {
+  text-decoration: underline;
+}

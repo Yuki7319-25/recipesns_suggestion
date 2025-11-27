@@ -1,0 +1,36 @@
+h2 {
+    color: #b29180;   /* 紫っぽい色 */
+}
+/* 横並びにする親要素 */
+.photos-row {
+    display: flex;
+    gap: 20px; /* 写真同士の間隔 */
+}
+
+/* 吹き出し + 写真 */
+.photo-with-balloon {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;  /* 画像と吹き出しの間隔 */
+}
+
+/* 吹き出し本体 */
+.balloon {
+    position: relative;
+    background: #f0f0f0;
+    padding: 10px 15px;
+    border-radius: 15px;
+    max-width: 200px;
+    font-size: 14px;
+}
+
+/* 矢印は常に左向き */
+.balloon::after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent #bc3434 transparent transparent; /* 左向き */
+}

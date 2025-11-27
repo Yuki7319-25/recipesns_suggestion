@@ -1,0 +1,178 @@
+body {
+  background: url('../img/wood.jpg');
+  background-size: cover;         /* 画面いっぱいに広げる */
+  background-position: center;    /* 真ん中表示 */
+  background-repeat: no-repeat;   /* 繰り返し無し */
+}
+
+
+/* ログインフォーム*/
+.form-signin {
+  position: relative;
+  background: #ff95e6;
+  border-radius: 14px;
+  padding: 40px 30px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  z-index: 1;
+}
+
+/* 古い紙テープの質感
+   （左右共通設定） */
+.form-signin::before,
+.form-signin::after {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 42px;
+
+  /* ★ 古紙風の質感（茶ばみ + 線維感） */
+  background: 
+    /* 汚れの粒感 */
+    radial-gradient(rgba(0,0,0,0.12) 1px, transparent 1px) repeat,
+    /* 紙の繊維ライン */
+    repeating-linear-gradient(
+      98deg,
+      rgba(255,255,255,0.25) 0px,
+      rgba(255,255,255,0.25) 2px,
+      rgba(0,0,0,0.04) 2px,
+      rgba(0,0,0,0.04) 4px
+    ),
+    /* 古紙の基礎色 */
+    #e4d7b2;
+
+  background-size:  
+      3px 3px,  /* 汚れ */
+      auto,     /* 紙繊維 */
+      auto;
+
+  opacity: 0.93;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.20);
+  z-index: 3;
+}
+
+/*左：古い破れ */
+.form-signin::before {
+  top: -22px;
+  left: -48px;
+  transform: rotate(-6deg);
+
+  /* 破れた紙のギザギザ（自然な形） */
+  clip-path: polygon(
+    0% 18%, 6% 5%, 12% 22%, 18% 4%,
+    26% 25%, 34% 7%, 42% 22%, 50% 6%,
+    58% 23%, 66% 5%, 74% 20%, 82% 4%,
+    90% 18%, 100% 8%, 96% 38%, 89% 85%,
+    78% 60%, 70% 95%, 60% 70%, 52% 92%,
+    45% 68%, 35% 96%, 28% 70%, 18% 94%,
+    8% 66%, 0% 88%
+  );
+}
+
+/*  右：別パターンで古い破れ */
+.form-signin::after {
+  top: -20px;
+  right: -48px;
+  transform: rotate(7deg);
+
+  clip-path: polygon(
+    0% 12%, 8% 3%, 16% 18%, 24% 5%,
+    32% 22%, 40% 4%, 48% 20%, 56% 6%,
+    64% 24%, 72% 4%, 80% 19%, 88% 5%,
+    100% 14%, 98% 40%, 92% 85%,
+    84% 55%, 75% 96%, 65% 62%, 55% 94%,
+    45% 66%, 37% 92%, 26% 70%, 16% 96%,
+    8% 60%, 0% 85%
+  );
+}
+
+/*古紙風ログインフォーム*/
+.form-signin {
+  max-width: 380px;
+  margin: 60px auto;
+  padding: 40px 30px;
+
+  /* ★ 古い紙の背景 */
+  background: 
+    /* 紙の汚れ（薄いブラウンの点々） */
+    radial-gradient(rgba(0,0,0,0.15) 1px, transparent 1px) 0 0 / 6px 6px,
+    /* 横方向の紙の繊維ムラ */
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.08) 0px,
+      rgba(255,255,255,0.08) 2px,
+      rgba(0,0,0,0.05) 2px,
+      rgba(0,0,0,0.05) 4px
+    ),
+    /* 古びた紙の色 */
+    #ddb66d;
+
+  border-radius: 12px;
+
+  /* ★ 外側の古びた濃い影（焦げ茶） */
+  box-shadow:
+    0 6px 20px rgba(58, 28, 4, 0.45),
+    inset 0 0 20px rgba(0,0,0,0.25); /* 内側の陰影で古紙感 */
+
+  position: relative;
+  z-index: 1;
+
+  /* ★ 少し歪んだようにみえる傾き（自然なビンテージ風） */
+  transform: rotate(-0.6deg);
+}
+
+/* タイトル（Please sign in） */
+.form-signin h1 {
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+/* エラーメッセージ */
+.form-signin p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* 入力欄デザイン */
+.form-signin .form-control {
+  background-color: #f5e6d0;   /* 入力欄の背景色 */
+  color: #5a3e1b;             /* 文字色 */
+  border: 1px solid #8b5a2b;   /* 枠線の色 */
+}
+
+.form-signin .form-control:focus {
+  background-color: #fff2e0;   /* フォーカス時の背景 */
+  border-color: #a0522d;       /* フォーカス時の枠線色 */
+  color: #5a3e1b;              /* 文字色 */
+  box-shadow: 0 0 5px rgba(160, 82, 45, 0.5);
+}
+
+
+/* ボタン */
+.form-signin input[type="submit"] {
+  margin-top: 10px;
+  padding: 12px 0;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 8px;
+
+  background-color: #8B4513; /* ボタンの色 */
+  color: #fff;              /* 文字色 */
+  border: none;             /* ボタンの枠線を消す場合 */
+  cursor: pointer;          /* ホバー時のカーソル */
+}
+
+.form-signin input[type="submit"]:hover {
+  background-color: #A0522D; /* ホバーした時の色 */
+}
+
+
+/* パスワードを忘れた？リンク */
+.form-signin a {
+  font-size: 14px;
+  color: #2e1200;
+  text-decoration: none;
+}
+
+.form-signin a:hover {
+  text-decoration: underline;
+}

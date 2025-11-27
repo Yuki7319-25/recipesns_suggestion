@@ -1,0 +1,36 @@
+{% extends "photo/base.html" %}
+
+{% block title %}Sign up{% endblock %}
+
+{% block contents %}
+<hr>
+<div class="container">
+  <div class="row">
+    <div class="col offset-2">
+      <h3>New menu</h3>
+      <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        <p>
+          {{ field.label_tag }}<br>
+          {{ field }}
+          {% if field.help_text %}
+          <small style="color: rgb(255, 255, 255)">{{ field.help_text }}</small>
+          {% endif %}
+          {% for error in field.errors %}
+          <p style="color: rgb(255, 255, 255)">{{ error }}</p>
+          {% endfor %}
+        </p>
+        {% endfor %}
+        <p style="color:rgb(255, 255, 255)">
+          ※メールアドレスはパスワードをリセットする際に必要になりますので、登録をお願いします。
+        </p>
+        <input type="submit" value="Sign up">
+      </form>
+      <br>
+      
+    </div>
+  </div>
+</div>
+{% endblock %}
+

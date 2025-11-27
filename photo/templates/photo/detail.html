@@ -1,0 +1,64 @@
+{% extends "photo/base.html" %}
+
+{% block title %}Photo Detail{% endblock %}
+
+{% block contents %}
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col offset-3">
+      <p class="text-muted">
+        投稿者：{{ object.user.username }}
+      </p>
+
+      <!-- タイトル -->
+      <h2>{{ object.title }}</h2>
+
+      <!-- コメント -->
+      <p>{{ object.comment }}</p>
+
+      <!-- レシピ -->
+      {% if object.recipe %}
+        <h4 class="recipe-title">レシピ</h4>
+        <p>{{ object.recipe|linebreaksbr }}</p>
+      {% endif %}
+
+      <br>
+      <!-- 投稿日時 -->
+      <p>{{ object.posted_at }} に投稿</p>
+
+      <!-- 1枚目の写真 -->
+      {% if object.image1 %}
+        <p><img src="{{ object.image1.url }}" class="photo-detail-img"></p>
+      {% endif %}
+
+      <!-- 2枚目の写真 -->
+      {% if object.image2 %}
+        <p><img src="{{ object.image2.url }}" class="photo-detail-img"></p>
+      {% endif %}
+
+      <!-- 投稿者本人だけ削除ボタン表示 -->
+      {% if request.user == object.user %}
+        <form method="POST" action="{% url 'photo:photo_delete' object.pk %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger my-2">削除する</button>
+        </form>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<!-- 写真サイズ調整用 CSS -->
+<style>
+.photo-detail-img {
+  width: 600px;        /* 固定横幅 */
+  height: 350px;       /* 固定高さ */
+  object-fit: cover;   /* はみ出し切り取りで綺麗に見せる */
+  border-radius: 8px;
+  display: block;
+  margin-bottom: 15px;
+}
+
+</style>
+
+{% endblock %}

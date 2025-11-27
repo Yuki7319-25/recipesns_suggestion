@@ -1,0 +1,148 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>{{ month }}月の会話</title>
+<style>
+  body {
+    font-family: 'Yu Gothic', 'Hiragino Kaku Gothic Pro', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url("{% static 'photo/images/num1.jpg' %}") no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+  }
+
+  h1 {
+    text-align: center;
+    color: #ffffff;
+    margin: 30px 0 20px 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  }
+
+  .conversation {
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    padding: 20px;
+  }
+
+  .message {
+    display: flex;
+    align-items: flex-start;
+    margin: 15px 0;
+  }
+
+  .message.staff { flex-direction: row; }
+  .message.customer { flex-direction: row-reverse; }
+
+  .avatar {
+    width: 180px;
+    height:450px;
+
+    object-fit: cover;
+    margin: 0 10px;
+  }
+
+  .bubble {
+    position: relative;
+    padding: 12px 18px;
+    border-radius: 20px;
+    max-width: 70%;
+    line-height: 1.5;
+  }
+
+  .staff .bubble {
+    background: #ffe0b2;
+    color: #333;
+  }
+
+  .staff .bubble::after {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent #ffe0b2 transparent transparent;
+  }
+
+  .customer .bubble {
+    background: #c8e6c9;
+    color: #333;
+    text-align: right;
+  }
+
+  .customer .bubble::after {
+    content: '';
+    position: absolute;
+    top: 15px;
+    right: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent transparent #c8e6c9;
+  }
+
+.center-links {
+    text-align: center; /* 中央寄せ */
+    margin-top: 20px;
+}
+
+.hover-link {
+    position: relative;
+    display: inline-block;
+    padding: 8px 15px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #fff;
+    background-color: #ff8a4200;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: background 0.3s ease;
+}
+
+.hover-link:hover {
+    background-color: #ff6f0000;
+}
+
+.hover-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background: #ffe0b2;
+    transform: translateX(-50%);
+    transition: width 0.4s ease;
+}
+
+.hover-link:hover::after {
+    width: 100%;
+}
+
+</style>
+</head>
+<body>
+
+<h1>{{ month }}月の会話</h1>
+
+<div class="conversation">
+    {% for speaker, text in conversation %}
+    <div class="message {% if speaker == '店員さん' %}staff{% else %}customer{% endif %}">
+        <img src="{% if speaker == '店員さん' %}{% static 'photo/images/image.png' %}{% else %}{% static 'photo/images/image1.png' %}{% endif %}" class="avatar" alt="{{ speaker }}">
+        <div class="bubble">
+            <strong>{{ speaker }}:</strong> {{ text }}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="center-links">
+    <a href="{% url 'photo:month_page' month=month %}" class="hover-link">← 月のページに戻る</a>
+</div>
+
+
+</body>
+</html>

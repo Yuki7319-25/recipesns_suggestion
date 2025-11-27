@@ -1,0 +1,25 @@
+{% extends 'photo/base.html' %}
+{% block title %}お気に入り{% endblock %}
+
+{% block contents %}
+<h2>あなたのお気に入りレシピ</h2>
+<div class="row">
+    {% for fav in favorites %}
+    <div class="col-md-4 mb-3">
+        <div class="card">
+            {% if fav.photo.image1 %}
+            <img src="{{ fav.photo.image1.url }}" class="card-img-top">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ fav.photo.title }}</h5>
+                <p class="card-text">{{ fav.photo.comment|truncatewords:15 }}</p>
+                <a href="{% url 'photo:detail' fav.photo.pk %}" class="btn btn-primary btn-sm">詳細</a>
+                <a href="{% url 'photo:favorite_toggle' fav.photo.pk %}" class="btn btn-secondary btn-sm">削除</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+        <p>お気に入りはまだありません。</p>
+    {% endfor %}
+</div>
+{% endblock %}

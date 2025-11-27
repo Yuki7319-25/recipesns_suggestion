@@ -1,0 +1,66 @@
+<style>
+/* 全体のフォームのスタイル */
+form {
+    background-color: #f8f9fa; /* 薄いグレー背景 */
+    border: 1px solid #dee2e6; /* 薄い枠線 */
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 400px;
+    margin: 20px auto;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* 質問文 */
+form p {
+    font-size: 16px;
+    color: #343a40;
+    margin-bottom: 15px;
+}
+
+/* ボタンのスタイル */
+form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* エラー表示 */
+p[style*="color:red"] {
+    font-weight: bold;
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 6px;
+    max-width: 400px;
+    margin: 10px auto;
+    text-align: center;
+}
+
+/* 結果メッセージ */
+h3 {
+    text-align: center;
+    color: #28a745;
+}
+
+p + h3 + p {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #155724;
+    background-color: #d4edda;
+    border-radius: 8px;
+    padding: 15px;
+    max-width: 400px;
+    margin: 10px auto;
+}
+</style>

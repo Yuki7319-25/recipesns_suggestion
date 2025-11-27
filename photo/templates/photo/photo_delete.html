@@ -1,0 +1,42 @@
+{% extends "photo/base.html" %}
+{% block title %}Photo Delete{% endblock %}
+
+{% block contents %}
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col offset-3">
+
+            <h3>この写真を削除してもいいですか？</h3>
+
+            <!-- 🧡 レシピ（説明文）を表示 -->
+            {% if object.recipe %}
+                <div class="recipe-box" style="
+                    background: rgba(255, 255, 255, 0.8);
+                    padding: 15px;
+                    border-radius: 10px;
+                    margin-bottom: 20px;
+                ">
+                    <h5>レシピ：</h5>
+                    <p>{{ object.recipe }}</p>
+                </div>
+            {% else %}
+                <p>※ レシピ情報はありません。</p>
+            {% endif %}
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <button class="btn btn-primary my-2" type="submit">削除</button>
+
+                <!-- キャンセルボタン（戻る） -->
+                <a href="{% url 'photo:detail' object.pk %}" 
+                   class="btn btn-secondary my-2">
+                   キャンセル
+                </a>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

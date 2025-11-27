@@ -1,0 +1,163 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>四季の行事料理カレンダー</title>
+<style>
+  body {
+      font-family: 'Yu Gothic', 'Hiragino Kaku Gothic Pro', sans-serif;
+      margin: 0;
+      padding: 20px;
+      /* 背景画像 */
+      background: url("{% static 'photo/images/num1.jpg' %}") no-repeat center center fixed;
+      background-size: cover;
+  }
+
+  h1 { 
+    text-align: center; 
+    color: #ffffff; 
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  }
+
+  .top-button {
+    display: block;
+    width: 200px;
+    margin: 0 auto 30px auto;
+    padding: 12px 0;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: 0.3s;
+  }
+
+  .calendar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .month-card {
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    color: #fff;
+    font-weight: bold;
+    background-size: cover;
+    background-position: center;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .month-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+  }
+
+  .month-card a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2em;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  }
+
+  /* ホバーリンク */
+  .center-links {
+      text-align: center;
+      margin-top: 20px;
+  }
+
+  .hover-link {
+      position: relative;
+      display: inline-block;
+      padding: 8px 15px;
+      text-decoration: none;
+      font-weight: bold;
+      color: #fff;
+      background-color: #ff8a4200;
+      border-radius: 5px;
+      overflow: hidden;
+      transition: background 0.3s ease;
+  }
+
+  .hover-link:hover {
+      background-color: #ff6f0000;
+  }
+
+  .hover-link::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 0;
+      height: 3px;
+      background: #ffe0b2;
+      transform: translateX(-50%);
+      transition: width 0.4s ease;
+  }
+
+  .hover-link:hover::after {
+      width: 100%;
+  }
+
+</style>
+</head>
+<body>
+
+<h1>四季の行事料理カレンダー</h1>
+
+<div class="center-links">
+    <a href="{% url 'photo:index' %}" class="hover-link">トップページに戻る</a>
+</div>
+
+<div class="calendar">
+    <div class="month-card" style="background-image: url('{% static 'photo/images/1.jpg' %}');">
+      <a href="{% url 'photo:month_page' 1 %}">1月</a>
+    </div>
+    <div class="month-card" style="background-image: url('{% static 'photo/images/2.jpg' %}');">
+      <a href="{% url 'photo:month_page' 2 %}">2月</a>
+    </div>
+    <div class="month-card" style="background-image: url('{% static 'photo/images/3.jpg' %}');">
+      <a href="{% url 'photo:month_page' 3 %}">3月</a>
+    </div>
+    <div class="month-card" style="background-image: url('{% static 'photo/images/4.jpg' %}');">
+      <a href="{% url 'photo:month_page' 4 %}">4月</a>
+    </div>
+    <div class="month-card" style="background-image: url('{% static 'photo/images/5.jpg' %}');">
+      <a href="{% url 'photo:month_page' 5 %}">5月</a>
+    </div>
+    <div class="month-card" style="background-image: url('{% static 'photo/images/6.jpg' %}');">
+      <a href="{% url 'photo:month_page' 6 %}">6月</a>
+    </div>
+    <div class="month-card" style="background-image: url('{% static 'photo/images/7.jpg' %}');">
+      <a href="{% url 'photo:month_page' 7 %}">7月</a>
+    </div>
+    <div class="month-card" style="background-image: url('{% static 'photo/images/8.jpg' %}');">
+      <a href="{% url 'photo:month_page' 8 %}">8月</a>
+    </div>
+    <div class="month-card" style="background-image: url('{% static 'photo/images/9.jpg' %}');">
+      <a href="{% url 'photo:month_page' 9 %}">9月</a>
+    </div>
+    <div class="month-card" style="background-image: url('{% static 'photo/images/10.jpg' %}');">
+      <a href="{% url 'photo:month_page' 10 %}">10月</a>
+    </div>
+    <div class="month-card" style="background-image: url('{% static 'photo/images/11.jpg' %}');">
+      <a href="{% url 'photo:month_page' 11 %}">11月</a>
+    </div>
+    <div class="month-card" style="background-image: url('{% static 'photo/images/12.jpg' %}');">
+      <a href="{% url 'photo:month_page' 12 %}">12月</a>
+    </div>
+</div>
+
+</body>
+</html>

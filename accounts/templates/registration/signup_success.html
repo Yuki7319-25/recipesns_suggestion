@@ -1,0 +1,27 @@
+{% extends "photo/base.html" %}
+
+{% block title %}Registration Complete{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <div class="row">
+        <!-- 中央寄せ：offset-4 ではなく mx-auto を推奨 -->
+        <div class="col-md-4 mx-auto py-4">
+            <h3>登録が完了しました</h3>
+
+            <p>
+                <a href="{% url 'accounts:login' %}" class="return-login-link">
+                    ログインはこちら
+                </a>
+            </p>
+
+            <!-- ホームに戻るボタン -->
+            <p>
+                <a href="{% url 'photo:index' %}" class="btn btn-primary">
+                    ホームに戻る
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

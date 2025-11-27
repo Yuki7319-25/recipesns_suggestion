@@ -1,0 +1,24 @@
+{% extends "photo/base.html" %}
+{% load static %}
+
+{% block title %}ログアウト{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <h1>ログアウトしました</h1>
+    <p><a href="{% url 'accounts:login' %}" class="back-login-link">ログインページに戻る</a></p>
+</div>
+
+<style>
+.back-login-link {
+  color: #fff4ec;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.back-login-link:hover {
+  text-decoration: underline;
+}
+</style>
+
+{% endblock %}

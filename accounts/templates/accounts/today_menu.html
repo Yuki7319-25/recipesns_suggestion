@@ -1,0 +1,45 @@
+{% extends "photo/base.html" %}
+{% load static %}
+
+{% block title %}本日のおすすめ{% endblock %}
+
+{% block contents %}
+<div class="recommend-card">
+
+    <h3>
+        こんにちは、
+        {% if user.is_authenticated %}
+            {{ user.username }}
+        {% else %}
+            ゲスト
+        {% endif %}さん
+    </h3>
+
+    <p>迷ったら、今日のおすすめを覗いてみてください</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <p>今日のおすすめの「{{ sele }}」なんてどうでしょうか？</p>
+        <input type="hidden" name="sele" value="{{ sele }}">
+        <button type="submit" name="answer" value="はい" class="recommend-btn">はい</button>
+        <button type="submit" name="answer" value="いいえ" class="recommend-btn">いいえ</button>
+    </form>
+
+    {% if error %}
+        <p class="error-message">{{ error }}</p>
+    {% endif %}
+
+    {% if message %}
+        <!-- 結果ボックス：画像＋吹き出し -->
+        <div class="result-box flex-result">
+            <div class="result-image">
+                <img src="{% static 'img/image.png' %}" alt="木の画像" class="result-img">
+            </div>
+            <div class="result-text balloon">
+                <p>{{ message }}</p>
+            </div>
+        </div>
+    {% endif %}
+
+</div>
+{% endblock %}

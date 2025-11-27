@@ -1,0 +1,33 @@
+{% extends "photo/base.html" %}
+{% load static %}
+
+{% block title %}ウエルカム{% endblock %}
+
+{% block contents %}
+<h1>ようこそ！{{ user.username }}さん</h1>
+
+<p>こんにちは。ここからはこのサイトを理解していただきたい説明書みたいなものです。暇なときにぜひ見てください</p>
+
+
+<h2>自己紹介</h2>
+{% load static %}
+
+<div class="photos-row">
+    <!-- 写真1 -->
+    <div class="photo-with-balloon">
+        <img src="{% static 'photo/images/Image.png' %}" width="300">
+        <div class="balloon">こんにちは！右にいるのがnovemberでノンです。ここの若旦那です</div>
+    </div>
+
+    <!-- 写真2 -->
+    <div class="photo-with-balloon">
+        <img src="{% static 'photo/images/image2.png' %}" width="300">
+        <div class="balloon">初めまして。急に他己紹介し始めた左にいるのがfoodから楓子です。この隠れや「New wakaba」の若女将です</div>
+    </div>
+</div>
+
+</div>
+
+
+
+{% endblock %}

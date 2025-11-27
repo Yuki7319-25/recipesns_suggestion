@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}料理dayS{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'photo/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'photo/css/balloon.css' %}">
+    
+</head>
+<body>
+
+<nav class="header">
+  <div class="header__info">
+    <p class="text-muted">
+        いらっしゃいませ。ここがあなたのよりどころになりますように
+    </p>
+  </div>
+
+  <ul class="header__menu">
+    <li class="header__menu-item"><a href="{% url 'photo:index' %}">エントランス</a></li>
+    {% if user.is_authenticated %}
+      <li class="header__menu-item"><a href="{% url 'photo:mypage' %}">小さなアトリエ</a></li>
+      <li class="header__menu-item">
+        <form id="logout-form" action="{% url 'accounts:logout' %}" method="post" style="display:none;">
+          {% csrf_token %}
+        </form>
+        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">席を離れる</a>
+      </li>
+      
+    <li class="header__menu-item"><a href="{% url 'accounts:today_menu' %}">本日のひと皿</a></li>
+    <li class="header__menu-item"><a href="{% url 'photo:favorites' %}">わたしの一皿</a></li>
+    <li class="header__menu-item"><a href="{% url 'photo:calendar' %}">季節のめぐり手帖</a></li>
+
+    {% else %}
+      <li class="header__menu-item"><a href="{% url 'accounts:signup' %}">席をつくる</a></li>
+      <li class="header__menu-item"><a href="{% url 'accounts:login' %}">席につく</a></li>
+    {% endif %}
+  </ul>
+</nav>
+
+<!-- メインコンテンツ -->
+<main>
+    {% block contents %}{% endblock %}
+</main>
+
+
+
+<!-- スライドショー JS -->
+<script>
+let slideIndex = 0;
+showSlides();
+function showSlides() {
+    let slides = document.getElementsByClassName("mySlides");
+    for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";  
+    slideIndex++;
+    if (slideIndex > slides.length) slideIndex = 1;    
+    if(slides.length > 0) slides[slideIndex-1].style.display = "block";  
+    setTimeout(showSlides, 3000);
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,493 @@
+/* ============================
+   サイト全体の背景
+============================= */
+/* style.css 内 */
+body {
+  background-image: url("/static/img/wood.jpg");
+  background-size: cover;
+}
+
+/* ============================
+   ヘッダー
+============================= */
+.header {
+    background: rgba(224, 117, 35, 0.511);
+    backdrop-filter: blur(5px);
+    padding: 15px 20px;
+    border-bottom: 1px solid #8b5e3c;
+}
+
+.header__title {
+  color: #fdf6e3 !important;
+}
+
+.header__subtitle {
+  color: #fce2ca !important;
+}
+
+/* ============================
+   フッターリンク
+============================= */
+footer a {
+  color: #fdf6e3 !important;
+  text-decoration: none;
+}
+
+/* ============================
+   和風カフェ風ボタン（スライド線）
+============================= */
+.btn-primary, .btn-secondary {
+  position: relative;
+  display: inline-block;
+  padding: 12px 25px;
+  background-color: #a26d4400; /* 基本色 */
+  color: #ffe2ce;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  overflow: hidden;  /* 下線アニメ用 */
+  transition: background 0.3s ease;
+}
+
+/* 下からスライドする線 */
+.btn-primary::after, .btn-secondary::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 4px;
+  background: #fdf6e3; /* 線の色 */
+  transform: translateX(-50%);
+  transition: width 0.4s ease;
+}
+
+/* ホバー時に背景を明るく＆線をスライド */
+.btn-primary:hover, .btn-secondary:hover {
+  background-color: #d49b7000;
+}
+
+.btn-primary:hover::after, .btn-secondary:hover::after {
+  width: 100%;
+}
+
+
+/* ============================
+   ログインフォームカード
+============================= */
+.form-signin {
+  max-width: 380px;
+  margin: 80px auto;
+  padding: 40px 30px;
+  background: #f5e4d3;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(122, 48, 2, 0.5);
+  position: relative;
+  z-index: 1;
+}
+
+.form-signin h1 {
+  font-family: 'Courier New', monospace;
+  color: #422311;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-signin input.form-control:focus {
+  border-color: #8b5e3c;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.form-signin input[type="submit"]:hover {
+  background-color: #a26c44 !important;
+}
+
+/* ============================
+   ナビゲーションメニュー
+============================= */
+.header__menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.header__menu-item a {
+    position: relative;
+    text-decoration: none;
+    color: #ffc49f;
+    padding: 5px 1px;
+    border-radius: 5px;
+    transition: color 0.5s, background-color 0.3s;
+}
+
+.header__menu-item a:hover {
+    color: #ffb259;
+    background-color: #8b5e3c;
+}
+
+.header__menu-item a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -3px;
+    left: 0;
+    background-color: #e6a44e;
+    transition: width 0.3s;
+}
+
+.header__menu-item a:hover::after {
+    width: 100%;
+}
+
+/* ============================
+   見出し・本文
+============================= */
+main p {
+  color: #fdf6e3;
+}
+
+main h1, main h2, main h3 {
+  color: #ffffff;
+}
+
+/* ============================
+   見出し・本文
+============================ */
+main p {
+  color: #fdf6e3;
+}
+
+main h1, main h2, main h3 {
+  color: #ffffff;
+}
+section p {
+  color: #ffe8c6;  /* ここの色を変更 */
+}
+
+section h1.fw-light {
+  color: #ffb259;  /* 見出しの色を変更 */
+}
+
+.btn-outline-secondary {
+    color: #5c3d1e !important;
+    border-color: #5c3d1e !important;
+}
+/* =======================
+   本日のおすすめページ用
+======================= */
+/* 結果ボックス横並び */
+.flex-result {
+    display: flex;
+    align-items: flex-start; /* 上揃え */
+    gap: 15px;               /* 画像と吹き出しの間隔 */
+}
+
+/* 画像サイズ */
+.result-image img.result-img {
+    width: 100px;     /* 横幅 */
+    height: auto;     /* 高さ自動調整 */
+    border-radius: 8px;
+}
+
+/* 吹き出し */
+.balloon {
+    position: relative;
+    background: #ffebc6;  /* 吹き出し色 */
+    border-radius: 10px;
+    padding: 10px 15px;
+    max-width: 300px;
+}
+
+/* 吹き出しの三角形 */
+.balloon::after {
+    content: "";
+    position: absolute;
+    top: 20px;           /* 三角形の縦位置 */
+    left: -15px;         /* 三角形の横位置（画像側に向ける） */
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent #ffebc6 transparent transparent;
+}
+
+/* 推奨ボタン */
+.recommend-btn {
+    background-color: #ff7f50;
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    font-size: 16px;
+    border-radius: 50px;
+    margin: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.recommend-btn:hover {
+    background-color: #ff5722;
+    transform: translateY(-2px);
+}
+
+/* エラーメッセージ */
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* 推奨カード */
+.recommend-card {
+    background: #6a2020;
+    padding: 30px;
+    max-width: 600px;
+    margin: 40px auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* 結果ボックス */
+.result-box {
+    margin-top: 30px;
+    padding: 20px;
+    background: #fceae8;
+    border-left: 6px solid #ff7f50;
+    border-radius: 8px;
+}
+.result-text.balloon {
+    background-color: #e35d5d; /* 背景を白に */
+    color: #8e2929;            /* 文字を黒に */
+    padding: 10px 15px;
+    border-radius: 15px;
+    position: relative;
+    font-weight: bold;
+    max-width: 250px;
+}
+
+/* 吹き出しの矢印 */
+.result-text.balloon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -15px; 
+    transform: translateY(-50%);
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent #e35d5d transparent transparent;
+}
+
+
+
+/* カード全体の幅を狭くする */
+.card {
+    max-width: 800px;   /* 好きな幅に変更 */
+    margin: 10px auto;  /* カード間の余白 */
+}
+
+/* 画像の高さを小さくする */
+.card-img-top {
+    height: 450px;       /* 好きな高さに変更 */
+    object-fit: cover;   /* 画像の切り抜きを整える */
+}
+
+.back-login-link {
+    color: #ffcc66;        /* 好きな色 */
+    font-weight: bold;     /* 太字 */
+    text-decoration: none; /* 下線なし */
+}
+
+.back-login-link:hover {
+    color: #ffaa00;        /* ホバー時 */
+}
+
+.back-home-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #ff7f50;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: 0.3s;
+    z-index: 9999;
+}
+
+.back-home-btn:hover {
+    background: #ff5722;
+    transform: translateY(-3px);
+}
+
+.return-login-link {
+    color: #ffb259;  /* オレンジ系 */
+    font-weight: bold;
+}
+
+.return-login-link:hover {
+    color: #ff8533;  /* 濃いオレンジ */
+}
+
+a {
+    color: #ffb259;
+}
+
+a:hover {
+    color: #ff7f2d;
+}
+.recipe-title {
+    color: #fff2ee;  /* 好きな色に変更 */
+}
+.card .card-title {
+    color: #fffaf8;
+}
+
+
+
+form table th {
+    color: #ff7043;
+}
+
+form table td input, form table td textarea, form table td select {
+    background-color: #fff3e0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 4px;
+}
+
+/* ============================
+   フォームボタン（スライド線）
+============================= */
+form button {
+  position: relative;
+  display: inline-block;
+  background-color: #56140000; /* 基本色 */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  overflow: hidden; /* 下線アニメ用 */
+  transition: background 0.3s ease;
+}
+
+/* 下からスライドする線 */
+form button::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background: #ffbaa4; /* 線の色 */
+  transform: translateX(-50%);
+  transition: width 0.4s ease;
+}
+
+/* ホバー時に背景色を明るく＆下線スライド */
+form button:hover {
+  background-color: #ffbba400; /* 背景色の変化 */
+  color: #ffc6a5; /* 文字色も反転して見やすく */
+}
+
+form button:hover::after {
+  width: 100%;
+}
+
+
+
+/* スライドショー全体のコンテナ */
+.slideshow-container {
+    max-width: 800px;
+    height: 450px;
+    position: relative;
+    margin: 40px auto 0 auto;  /* 上に40pxの余白を追加、左右中央寄せ */
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+
+/* 個別スライド */
+.mySlides {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+/* 画像のサイズ調整 */
+.mySlides img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 画像をコンテナに合わせて切り抜き */
+}
+
+/* フェード効果 */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+}
+
+
+/* 2列グリッド */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* ⭐2列 */
+    gap: 20px;
+    padding: 10px;
+}
+
+/* カード */
+.photo-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+}
+
+/* 画像 */
+.photo-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* いいねボタン */
+.like-btn {
+    border: 1px solid #e74c3c;
+    background: white;
+    color: #e74c3c;
+    padding: 5px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.like-btn.liked {
+    background: #e74c3c;
+    color: white;
+}
+.photo-card {
+  border: 1px solid #000000;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  background-color: #efd0ba; /* ここで背景色を指定 */
+}
+.photo-card p {
+  color: #b26e6e;       /* 文字色 */
+  font-size: 16px;      /* フォントサイズ */
+  font-family: Arial, sans-serif; /* フォント */
+  font-weight: bold;    /* 太字 */
+}
+

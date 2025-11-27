@@ -1,0 +1,105 @@
+/* サイト全体背景 */
+body {
+  background-image: url('../images/wood.jpg');
+  background-size: cover;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #2f1f0e;
+}
+
+/* ヘッダー */
+.header {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  border-bottom: 2px solid #8b5e3c;
+}
+
+.header__title {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #4b2e1c;
+}
+
+.header__subtitle {
+  margin: 0;
+  font-size: 1rem;
+  color: #3e2b18;
+}
+
+/* ログインフォームカード */
+.form-signin {
+  max-width: 380px;
+  margin: 80px auto;
+  padding: 40px 30px;
+  background: #f5e4d3;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(122, 48, 2, 0.5);
+  position: relative;
+  z-index: 1;
+}
+
+/* マスキングテープ風装飾 */
+.form-signin::before,
+.form-signin::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 20px;
+  background: #d2b48c;
+  top: -10px;
+  transform: rotate(-15deg);
+  left: -20px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.3);
+}
+
+.form-signin::after {
+  right: -20px;
+  left: auto;
+  transform: rotate(15deg);
+}
+
+/* フォーム要素 */
+.form-signin input.form-control {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #c39b70;
+  border-radius: 6px;
+  background-color: #fff8f0;
+  color: #2f1f0e;
+}
+
+/* 入力欄フォーカス時 */
+.form-signin input.form-control:focus {
+  border-color: #8b5e3c;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+/* ボタン */
+.form-signin input[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #8b5e3c !important;
+  border: 1px solid #5a3a20 !important;
+  color: #fff !important;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.form-signin input[type="submit"]:hover {
+  background-color: #a26c44 !important;
+}
+
+/* 古い感じを強調する */
+.form-signin h1 {
+  font-family: 'Courier New', monospace;
+  color: #4b2e1c;
+  text-align: center;
+  margin-bottom: 20px;
+}

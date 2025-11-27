@@ -1,0 +1,192 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>{{ month }}月のページ</title>
+<style>
+  body {
+    font-family: 'Yu Gothic', 'Hiragino Kaku Gothic Pro', sans-serif;
+    margin: 0; padding: 0;
+    background-image: url("{% static 'photo/images/num1.jpg' %}");
+    background-size: cover; background-position: center center;
+  }
+
+.container {
+    max-width: 300px;            /* 扉っぽい縦長 */
+    margin: 50px auto;
+    padding: 120px;
+    background: rgba(255, 243, 225, 0.95); /* 木の色 */
+    border-radius: 10px;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.3), 0 5px 15px rgba(0,0,0,0.2); /* 扉の奥行き感 */
+    text-align: center;
+    border: 5px solid #7a4c1d;  /* 扉の枠 */
+    position: relative;
+}
+
+/* 扉の金具風アクセント */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    width: 10px;
+    height: 40px;
+    background: #d4af37; /* 金色 */
+    border-radius: 3px;
+    transform: translateY(-50%);
+}
+
+.container::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    width: 10px;
+    height: 40px;
+    background: #d4af37; 
+    border-radius: 3px;
+    transform: translateY(-50%);
+}
+
+
+
+.hover-link {
+    position: relative;
+    display: inline-block;
+    margin: 0 10px;
+    padding: 12px 25px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #fff;
+    background-color: #ff8c42;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: background 0.3s ease;
+}
+
+
+  /* ノン君固定右側 */
+  .hostess {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    text-align: center;
+    z-index: 1000;
+  }
+.hostess img { 
+  width: 200px; 
+  height: 400px;       /* 正方形にする */
+  object-fit: cover;    /* 画像を枠に合わせてトリミング */
+  border-radius: 10px; 
+  margin-bottom: 10px; 
+}
+
+
+  .speech {
+    background: #ffedd1;
+    padding: 10px 15px;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    font-weight: bold;
+    max-width: 220px;
+    text-align: center;
+    position: relative;
+    white-space: normal;
+  }
+  .speech img {
+    width: 100%; margin-top: 10px; border-radius: 8px;
+  }
+.speech::after {
+    content: '';
+    position: absolute;
+    top: -20px; /* 吹き出し上部に配置 */
+    left: 20px; /* 矢印の横位置 */
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #ffffff transparent; /* 上向き */
+}
+
+.hover-menu {
+    position: relative;
+    display: inline-block;
+    padding: 8px 15px;
+    text-decoration: none;
+    color: #230f05;               /* 通常文字色 */
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* 下からスライドする背景用擬似要素 */
+.hover-menu::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0;                  /* 初期は高さ0 */
+    background-color: rgba(255, 140, 66, 0.3); /* 薄いオレンジで重ねる */
+    transition: height 0.3s ease;
+    z-index: -1;                /* 文字の下に表示 */
+}
+
+/* ホバー時 */
+.hover-menu:hover::after {
+    height: 100%;               /* リンク全体に広がる */
+}
+
+.hover-menu:hover {
+    color: #ff730f;                /* ホバー時文字色変更 */
+}
+
+ul {
+    list-style: none;  /* デフォルトの点や数字を消す */
+    padding: 0;        /* 左の余白もリセット */
+    margin: 0;         /* 必要に応じてリセット */
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>{{ month }}月のページ</h1>
+  <p>{{ month }}月の行事やおすすめの料理などを紹介するページです。</p>
+<ul class="header__menu">
+    <li><a href="{% url 'photo:conversation' month=month %}" class="hover-menu">この月の会話を見る</a></li>
+    <li><a href="{% url 'photo:calendar' %}" class="hover-menu">季節の小径</a></li>
+
+  </div>
+</div>
+
+<!-- ホステス -->
+<div class="hostess">
+  <img src="{% static 'photo/images/image2.png' %}" alt="ホステス">
+  <div class="speech" id="speechBox"></div>
+</div>
+
+<script>
+  // コメントと写真の配列
+  const slides = [
+    { text: "いらっしゃいませ！中をご案内します♪" },
+    { text: "ぜひ中に入って楽しんでください！"}
+  ];
+
+  let index = 0;
+  const speechBox = document.getElementById('speechBox');
+
+  function showSlide() {
+    const slide = slides[index];
+    speechBox.innerHTML = slide.text ;
+    index = (index + 1) % slides.length;
+  }
+
+  // 初期表示
+  showSlide();
+  // 3秒ごとに切り替え
+  setInterval(showSlide, 3000);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+main p {
+  color: #fdf6e3;
+}
+
+main h1, main h2, main h3 {
+  color: #ffffff; /* 好きな色で見出しだけ変える */
+}
+
+footer a {
+  color: #fdf6e3 !important; /* 青緑系に変更 */
+  text-decoration: none; /* 下線を消す場合 */
+}
+
+.btn-primary {
+  background-color: #a26c44; /* ボタン背景色 */
+  border-color: #a26c44;     /* 枠線色 */
+  color: #fdf6e3;            /* ボタン文字色 */
+}
+
+.btn-primary:hover {
+  background-color: #d49b70;
+  border-color: #a26c44;
+}
+
+.btn-secondary {
+  background-color: #a26c44;
+  border-color: #a26c44;
+  color: #fdf6e3;
+}
+
+.btn-secondary:hover {
+  background-color: #d49b70;
+  border-color: #8b5e3c;
+}
+
+/* サイト全体背景 */
+body {
+  background-image: url('../images/wood.jpg');
+  background-size: cover;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #2f1f0e;
+}
+
+/* ヘッダー */
+.header {
+    background: rgba(224, 117, 35, 0.511);
+    backdrop-filter: blur(5px); /* ぼかして上品に */
+    padding: 15px 20px;
+    border-bottom: 1px solid #8b5e3c;
+}
+
+
+.header__subtitle {
+  margin: 0;
+  font-size: 1rem;
+  color: #3e2b18;
+}
+
+/* ログインフォームカード */
+.form-signin {
+  max-width: 380px;
+  margin: 80px auto;
+  padding: 40px 30px;
+  background: #f5e4d3;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(122, 48, 2, 0.5);
+  position: relative;
+  z-index: 1;
+}
+
+
+
+.form-signin::after {
+  right: -20px;
+  left: auto;
+  transform: rotate(15deg);
+}
+
+
+/* 入力欄フォーカス時 */
+.form-signin input.form-control:focus {
+  border-color: #8b5e3c;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+
+
+.form-signin input[type="submit"]:hover {
+  background-color: #a26c44 !important;
+}
+
+/* 古い感じを強調する */
+.form-signin h1 {
+  font-family: 'Courier New', monospace;
+  color: #422311;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header__menu {
+    list-style: none;      /* 点を消す */
+    padding: 0;            /* ulの余白をリセット */
+    margin: 0;             /* ulの余白をリセット */
+    display: flex;         /* 横並びにする */
+    gap: 20px;             /* リストアイテムの間隔 */
+    align-items: center;   /* 高さを揃える */
+}
+
+.header__title {
+  color: #fdf6e3 !important;
+}
+
+.header__subtitle {
+  color: #fce2ca !important;
+}
+.navbar-dark .navbar-brand {
+  color: #ffe8c6 !important;
+}
+footer {
+  color: #f8e9d0 !important;
+}
+
+.header__menu-item a {
+    position: relative;
+    text-decoration: none;
+    color: #ffc49f;
+    transition: color 0.5s;
+}
+
+.header__menu-item a:hover {
+    color: #deaf52;
+}
+
+.header__menu-item a:hover::after {
+    width: 100%;
+}
+
+
+.header__menu-item a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -3px;
+    left: 0;
+    background-color: #e6a44e;
+    transition: width 0.3s;
+}
+
+.header__menu-item a:hover {
+    color: #ffb259;
+}
+
+.header__menu-item a:hover::after {
+    width: 100%;
+}
+
+.header__menu-item a {
+    position: relative;
+    text-decoration: none;
+    color: #ffc49f;             /* 文字色 */ 
+    padding: 5px 1px;          /* 背景が見えるように余白 */
+    border-radius: 5px;          /* 角を丸くする */
+    transition: color 0.5s, background-color 0.3s; /* ホバーで変える場合も滑らかに */
+}
+
+.header__menu-item a:hover {
+    color: #ffb259;              /* ホバー文字色 */
+    background-color: #8b5e3c;   /* ホバー背景色 */
+}
+
